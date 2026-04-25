@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>CodeReviewService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">AI Code Review</a> &gt; <a href="index.source.html" class="el_package">com.ai.codereview.service</a> &gt; <span class="el_source">CodeReviewService.java</span></div><h1>CodeReviewService.java</h1><pre class="source lang-java linenums">package com.ai.codereview.service;
+
+import com.ai.codereview.client.HuggingFaceClient;
+import com.ai.codereview.model.CodeReview;
+import com.ai.codereview.repository.CodeReviewRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
+
+import java.time.LocalDateTime;
+
+@Service
+public class CodeReviewService {
+
+<span class="nc" id="L17">    private static final Logger logger = LoggerFactory.getLogger(CodeReviewService.class);</span>
+    private final CodeReviewRepository repository;
+    private final HuggingFaceClient hfClient;
+
+<span class="nc" id="L21">    public CodeReviewService(CodeReviewRepository repository, HuggingFaceClient hfClient) {</span>
+<span class="nc" id="L22">        this.repository = repository;</span>
+<span class="nc" id="L23">        this.hfClient = hfClient;</span>
+<span class="nc" id="L24">    }</span>
+
+    public Page&lt;CodeReview&gt; getAllReviews(Pageable pageable) {
+<span class="nc" id="L27">        logger.info(&quot;Fetching all code reviews with pagination&quot;);</span>
+<span class="nc" id="L28">        return repository.findAll(pageable);</span>
+    }
+
+    public CodeReview getReviewById(Long id) {
+<span class="nc" id="L32">        logger.info(&quot;Fetching code review with id: {}&quot;, id);</span>
+<span class="nc" id="L33">        return repository.findById(id)</span>
+<span class="nc" id="L34">                .orElseThrow(() -&gt; new IllegalArgumentException(&quot;Code review not found with id: &quot; + id));</span>
+    }
+
+    public CodeReview reviewCode(String codeSnippet) {
+<span class="nc" id="L38">        logger.info(&quot;Processing code review in service&quot;);</span>
+<span class="nc" id="L39">        CodeReview review = new CodeReview();</span>
+<span class="nc" id="L40">        review.setCodeSnippet(codeSnippet);</span>
+<span class="nc" id="L41">        review.setCreatedAt(LocalDateTime.now());</span>
+
+        // Call Hugging Face client
+<span class="nc" id="L44">        logger.info(&quot;Calling HuggingFace API&quot;);</span>
+<span class="nc" id="L45">        String result = hfClient.reviewCode(codeSnippet);</span>
+<span class="nc" id="L46">        review.setReviewResult(result);</span>
+
+<span class="nc" id="L48">        CodeReview savedReview = repository.save(review);</span>
+<span class="nc" id="L49">        logger.info(&quot;Code review saved with id: {}&quot;, savedReview.getId());</span>
+<span class="nc" id="L50">        return savedReview;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

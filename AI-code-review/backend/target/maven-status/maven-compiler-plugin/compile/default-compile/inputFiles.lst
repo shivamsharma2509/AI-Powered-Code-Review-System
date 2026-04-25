@@ -1,0 +1,15 @@
+/Users/shivamsharma/IdeaProjects/AI Based Code Review System/AI-code-review/backend/src/main/java/com/ai/codereview/CodeReviewApplication.java
+/Users/shivamsharma/IdeaProjects/AI Based Code Review System/AI-code-review/backend/src/main/java/com/ai/codereview/client/HuggingFaceClient.java
+/Users/shivamsharma/IdeaProjects/AI Based Code Review System/AI-code-review/backend/src/main/java/com/ai/codereview/config/CorrelationIdFilter.java
+/Users/shivamsharma/IdeaProjects/AI Based Code Review System/AI-code-review/backend/src/main/java/com/ai/codereview/config/RateLimitConfig.java
+/Users/shivamsharma/IdeaProjects/AI Based Code Review System/AI-code-review/backend/src/main/java/com/ai/codereview/config/WebConfig.java
+/Users/shivamsharma/IdeaProjects/AI Based Code Review System/AI-code-review/backend/src/main/java/com/ai/codereview/controller/CodeReviewController.java
+/Users/shivamsharma/IdeaProjects/AI Based Code Review System/AI-code-review/backend/src/main/java/com/ai/codereview/dto/ApiResponse.java
+/Users/shivamsharma/IdeaProjects/AI Based Code Review System/AI-code-review/backend/src/main/java/com/ai/codereview/exception/GlobalExceptionHandler.java
+/Users/shivamsharma/IdeaProjects/AI Based Code Review System/AI-code-review/backend/src/main/java/com/ai/codereview/model/CodeReview.java
+/Users/shivamsharma/IdeaProjects/AI Based Code Review System/AI-code-review/backend/src/main/java/com/ai/codereview/model/CodeSnippetRequest.java
+/Users/shivamsharma/IdeaProjects/AI Based Code Review System/AI-code-review/backend/src/main/java/com/ai/codereview/repository/CodeReviewRepository.java
+/Users/shivamsharma/IdeaProjects/AI Based Code Review System/AI-code-review/backend/src/main/java/com/ai/codereview/security/JwtAuthenticationFilter.java
+/Users/shivamsharma/IdeaProjects/AI Based Code Review System/AI-code-review/backend/src/main/java/com/ai/codereview/security/JwtUtils.java
+/Users/shivamsharma/IdeaProjects/AI Based Code Review System/AI-code-review/backend/src/main/java/com/ai/codereview/security/SecurityConfig.java
+/Users/shivamsharma/IdeaProjects/AI Based Code Review System/AI-code-review/backend/src/main/java/com/ai/codereview/service/CodeReviewService.java
