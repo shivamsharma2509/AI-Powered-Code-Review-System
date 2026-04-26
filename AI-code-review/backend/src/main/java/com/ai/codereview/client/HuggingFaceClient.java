@@ -21,8 +21,8 @@ public class HuggingFaceClient {
     private final String apiUrl;
 
     public HuggingFaceClient(
-            @Value("${huggingface.api.key}") String apiKey,
-            @Value("${huggingface.api.url}") String apiUrl) {
+            @Value("${huggingface.api.key:}") String apiKey,
+            @Value("${huggingface.api.url:}") String apiUrl) {
         this.apiKey = apiKey;
         this.apiUrl = apiUrl;
     }
