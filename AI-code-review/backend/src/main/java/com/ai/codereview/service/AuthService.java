@@ -40,6 +40,6 @@ public class AuthService {
             throw new RuntimeException("Invalid credentials");
         }
 
-        return jwtUtils.generateToken(email);
+        return jwtUtils.generateJwtToken(email);
     }
 }
