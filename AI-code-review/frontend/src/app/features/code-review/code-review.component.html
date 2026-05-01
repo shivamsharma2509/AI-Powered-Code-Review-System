@@ -1,0 +1,38 @@
+<div class="container">
+
+  <h2>AI Code Review</h2>
+
+  <label>Language</label>
+  <select [(ngModel)]="language">
+    <option>Java</option>
+    <option>C++</option>
+    <option>Python</option>
+    <option>JavaScript</option>
+  </select>
+
+  <br /><br />
+
+  <textarea
+    rows="12"
+    placeholder="Paste your code here..."
+    [(ngModel)]="code">
+  </textarea>
+
+  <br /><br />
+
+  <button (click)="submitCode()" [disabled]="loading">
+    {{ loading ? 'Analyzing...' : 'Submit' }}
+  </button>
+
+  <button (click)="clear()">Clear</button>
+
+  <hr />
+
+  <p class="error" *ngIf="error">{{ error }}</p>
+
+  <div class="result" *ngIf="reviewResult">
+    <h3>AI Review</h3>
+    <pre>{{ reviewResult }}</pre>
+  </div>
+
+</div>
