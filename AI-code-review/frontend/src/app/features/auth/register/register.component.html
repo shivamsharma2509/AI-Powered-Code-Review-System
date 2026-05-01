@@ -1,0 +1,22 @@
+<div class="auth-container">
+  <h2>Register</h2>
+
+  <form [formGroup]="form" (ngSubmit)="register()">
+
+    <input type="text" placeholder="Name" formControlName="name" />
+    <br /><br />
+
+    <input type="email" placeholder="Email" formControlName="email" />
+    <br /><br />
+
+    <input type="password" placeholder="Password" formControlName="password" />
+    <br /><br />
+
+    <button type="submit">Register</button>
+  </form>
+
+  <p>
+    Already have an account?
+    <a routerLink="/login">Login</a>
+  </p>
+</div>
